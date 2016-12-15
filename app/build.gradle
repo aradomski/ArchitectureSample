@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "radomski.edu.pl.architecturesample"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        jackOptions {
+            enabled true
+        }
+        buildConfigField 'String', 'API_URL', "\"https://google.pl\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        staging {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/debug/proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        dev {
+            applicationIdSuffix = ".dev"
+        }
+        qa {
+            applicationIdSuffix = ".qa"
+        }
+        prod {
+
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile junit
+
+    compile support_appcompat
+    compile support_design
+
+    annotationProcessor dagger_compiler
+//    apt dagger_compiler
+    compile dagger
+    provided javax
+
+    compile glide
+
+
+    compile okhttp
+    compile retrofit
+    compile retrofit_gson
+    compile gson
+
+
+    compile rxandroid
+    compile rxjava
+    compile retrofit_rxjava_adapter
+
+    compile joda
+
+    compile timber
+
+    //DEBUG BUILD ONLY
+    debugCompile stetho
+    debugCompile stetho_okhttp
+    debugCompile stetho_js_rhino
+    debugCompile stetho_glide
+
+    debugCompile leakcanary
+
+    debugCompile retrofit_logging
+
+}
