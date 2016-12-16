@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import pl.edu.radomski.architecturesample.api.BaseApiClient;
+import pl.edu.radomski.architecturesample.api.dev.data.ApiFollower;
 import pl.edu.radomski.architecturesample.api.dev.data.ApiRepos;
 import pl.edu.radomski.architecturesample.api.dev.data.ApiUser;
 import pl.edu.radomski.architecturesample.di.api.ApiScope;
@@ -25,5 +26,9 @@ public class GithubSampleApiClient extends BaseApiClient<GithubApiInterface> {
 
     public Observable<List<ApiRepos>> userRepos(String userName) {
         return getApiWorker().userRepos(userName);
+    }
+
+    public Observable<List<ApiFollower>> userFolowers(String userName) {
+        return getApiWorker().userFolowers(userName);
     }
 }

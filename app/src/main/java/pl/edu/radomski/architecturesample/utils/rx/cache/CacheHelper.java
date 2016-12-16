@@ -19,6 +19,15 @@ public class CacheHelper {
         return wrap(cache, observable, CacheWrapTime::new);
     }
 
+    public static <T> Observable<T> cachingTimeCallWrap(BehaviorSubject<CacheWrapper<T>> cache, Observable<T> observable, int time) {
+        WrapperBuilder<T> wrapperBuilder = value -> {
+            CacheWrapTime<T> wrapTime = new CacheWrapTime<>(value);
+            wrapTime.setCacheTime(time);
+            return wrapTime;
+        };
+        return wrap(cache, observable, wrapperBuilder);
+    }
+
     private static <T> Observable<T> wrap(BehaviorSubject<CacheWrapper<T>> cache, Observable<T> observable, WrapperBuilder<T> wrapperBuilder) {
         Observable<CacheWrapper<T>> cacheValue;
 

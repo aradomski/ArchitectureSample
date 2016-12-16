@@ -26,6 +26,7 @@ public class OkHttpProvider {
     public static OkHttpClient provideOkHttp() {
         if (okHttpClient == null) {
             OkHttpClient.Builder builder = getBuilder();
+            builder.retryOnConnectionFailure(false);
             okHttpClient = builder.build();
         }
         return okHttpClient;

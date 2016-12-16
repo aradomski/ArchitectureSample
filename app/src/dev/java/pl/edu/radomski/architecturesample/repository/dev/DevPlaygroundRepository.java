@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import pl.edu.radomski.architecturesample.api.dev.GithubSampleApiClient;
+import pl.edu.radomski.architecturesample.api.dev.data.ApiFollower;
 import pl.edu.radomski.architecturesample.api.dev.data.ApiRepos;
 import pl.edu.radomski.architecturesample.api.dev.data.ApiUser;
 import pl.edu.radomski.architecturesample.di.app.AppScope;
@@ -19,8 +20,8 @@ public class DevPlaygroundRepository {
     @Inject
     GithubSampleApiClient githubSampleApiClient;
 
-
     private BehaviorSubject<CacheWrapper<List<ApiRepos>>> reposCache = BehaviorSubject.create();
+    private BehaviorSubject<CacheWrapper<List<ApiFollower>>> followersCache = BehaviorSubject.create();
 
     @Inject
     public DevPlaygroundRepository() {
@@ -33,6 +34,10 @@ public class DevPlaygroundRepository {
 
     public Observable<List<ApiRepos>> userRepos(String userName) {
         return CacheHelper.cachingCallWrap(reposCache, githubSampleApiClient.userRepos(userName));
+    }
+
+    public Observable<List<ApiFollower>> userFolowers(String userName) {
+        return CacheHelper.cachingTimeCallWrap(followersCache, githubSampleApiClient.userFolowers(userName));
     }
 
     public void invalidateCache() {

@@ -12,6 +12,10 @@
             name="repos"
             type="pl.edu.radomski.architecturesample.presenters.dev.data.Repos" />
 
+        <variable
+            name="follower"
+            type="pl.edu.radomski.architecturesample.presenters.dev.data.Follower" />
+
     </data>
 
     <ScrollView
@@ -64,6 +68,16 @@
                 android:layout_height="wrap_content"
                 android:text="@{repos.toString}" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{follower.toString}" />
 
             <ImageView
                 android:id="@+id/image"

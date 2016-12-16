@@ -27,7 +27,6 @@ public class DevPlaygroundActivity extends BaseActivity {
 
         dataBinding.refresh.setOnClickListener(v -> refresh());
         dataBinding.invalidateCache.setOnClickListener(v -> devPlaygroundPresenter.invalidateCache());
-        refresh();
     }
 
     private void refresh() {
@@ -35,7 +34,7 @@ public class DevPlaygroundActivity extends BaseActivity {
             dataBinding.setUser(user);
         }, throwable -> {
             Timber.d(throwable);
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error obtaining user data", Toast.LENGTH_SHORT).show();
         });
         subscribe(devPlaygroundPresenter.userRepos(dataBinding.username.getText().toString()), reposes -> {
             if (reposes.size() > 0) {
@@ -43,7 +42,15 @@ public class DevPlaygroundActivity extends BaseActivity {
             }
         }, throwable -> {
             Timber.d(throwable);
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error obtaining user repos", Toast.LENGTH_SHORT).show();
+        });
+        subscribe(devPlaygroundPresenter.userFolowers(dataBinding.username.getText().toString()), followers -> {
+            if (followers.size() > 0) {
+                dataBinding.setFollower(followers.get(0));
+            }
+        }, throwable -> {
+            Timber.d(throwable);
+            Toast.makeText(this, "Error obtaining user followers", Toast.LENGTH_SHORT).show();
         });
     }
 

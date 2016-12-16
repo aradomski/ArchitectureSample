@@ -75,7 +75,6 @@ dependencies {
     compile support_design
 
     annotationProcessor dagger_compiler
-//    apt dagger_compiler
     compile dagger
     provided javax
 
