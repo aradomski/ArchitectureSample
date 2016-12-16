@@ -3,13 +3,13 @@ package pl.edu.radomski.architecturesample.ux.utils;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
-public class GlideHelper {
+public class PicassoHelper {
 
 
     public static void load(Context context, String path, ImageView target) {
-        Glide.with(context)
+        Picasso.with(context)
                 .load(path)
                 .into(target);
     }

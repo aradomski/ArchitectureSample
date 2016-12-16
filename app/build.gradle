@@ -38,7 +38,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.sampleKey
         }
-        debug{
+        debug {
             minifyEnabled false
             applicationIdSuffix ".debug"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/debug/proguard-rules.pro'
@@ -79,8 +79,7 @@ dependencies {
     compile dagger
     provided javax
 
-    compile glide
-
+    compile picasso
 
     compile okhttp
     compile retrofit
@@ -100,7 +99,8 @@ dependencies {
     debugCompile stetho
     debugCompile stetho_okhttp
     debugCompile stetho_js_rhino
-    debugCompile stetho_glide
+    debugCompile stetho_timber
+    debugCompile okhttp3_picasso_downloader
 
     debugCompile leakcanary
 
