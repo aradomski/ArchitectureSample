@@ -16,14 +16,24 @@ android {
         }
         buildConfigField 'String', 'API_URL', "\"https://google.pl\""
     }
+    signingConfigs {
+        sampleKey {
+            keyAlias 'key0'
+            keyPassword 'aaaaaa'
+            storeFile file('../keys/sampleKey.jks')
+            storePassword 'aaaaaa'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sampleKey
         }
         staging {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sampleKey
         }
         debug{
             minifyEnabled false

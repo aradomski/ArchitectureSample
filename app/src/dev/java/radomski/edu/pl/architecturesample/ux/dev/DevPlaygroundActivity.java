@@ -2,6 +2,7 @@ package radomski.edu.pl.architecturesample.ux.dev;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -25,8 +26,24 @@ public class DevPlaygroundActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         dataBinding = setView(R.layout.dev_playground_activity);
 
-        subscribe(devPlaygroundPresenter.user("aradomski"), apiUser -> {
-            dataBinding.setUser(apiUser);
+        dataBinding.refresh.setOnClickListener(v -> refresh());
+        dataBinding.invalidateCache.setOnClickListener(v -> devPlaygroundPresenter.invalidateCache());
+        refresh();
+    }
+
+    private void refresh() {
+        subscribe(devPlaygroundPresenter.user(dataBinding.username.getText().toString()), user -> {
+            Timber.d("User:", user);
+            dataBinding.setUser(user);
+        }, throwable -> {
+            Timber.d(throwable);
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        });
+        subscribe(devPlaygroundPresenter.userRepos(dataBinding.username.getText().toString()), reposes -> {
+            Timber.d("Repos:", reposes);
+            if (reposes.size() > 0) {
+                dataBinding.setRepos(reposes.get(0));
+            }
         }, throwable -> {
             Timber.d(throwable);
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
