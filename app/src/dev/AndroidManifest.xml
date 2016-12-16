@@ -4,8 +4,8 @@
     <application>
         <activity
             android:label="@string/app_name_dev"
-            android:name="radomski.edu.pl.architecturesample.ux.dev.DevPlaygroundActivity"
-            android:taskAffinity="radomski.edu.pl.architecturesample.ux.dev.DevPlaygroundActivity">
+            android:name="pl.edu.radomski.architecturesample.ux.dev.DevPlaygroundActivity"
+            android:taskAffinity="pl.edu.radomski.architecturesample.ux.dev.DevPlaygroundActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

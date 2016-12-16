@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="user"
-            type="radomski.edu.pl.architecturesample.presenters.dev.data.User" />
+            type="pl.edu.radomski.architecturesample.presenters.dev.data.User" />
 
         <variable
             name="repos"
-            type="radomski.edu.pl.architecturesample.presenters.dev.data.Repos" />
+            type="pl.edu.radomski.architecturesample.presenters.dev.data.Repos" />
 
     </data>
 
@@ -62,6 +63,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{repos.toString}" />
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:image="@{user.avatarUrl}" />
+
         </LinearLayout>
     </ScrollView>
 </layout>

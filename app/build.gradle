@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+//apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -11,9 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        jackOptions {
-            enabled true
-        }
+
+        // Jack is causing issues with databinding 16.12.2016
+//        jackOptions {
+//            enabled true
+//        }
         buildConfigField 'String', 'API_URL', "\"https://google.pl\""
     }
     signingConfigs {
