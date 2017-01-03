@@ -3,6 +3,7 @@
     package="pl.edu.radomski.architecturesample">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="pl.edu.radomski.architecturesample.App"
         android:allowBackup="true"

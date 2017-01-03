@@ -18,30 +18,5 @@ public class SuperApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        Stetho.initialize(Stetho.newInitializerBuilder(this)
-                .enableWebKitInspector(() -> new Stetho.DefaultInspectorModulesBuilder(SuperApp.this)
-                        .runtimeRepl(new JsRuntimeReplFactoryBuilder(SuperApp.this)
-                                .addVariable("foo", "bar")
-                                .build())
-                        .finish())
-                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                .build());
-
-
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
-        LeakCanary.install(this);
-
-        Timber.plant(new Timber.DebugTree());
-        Timber.plant(new StethoTree());
-
-        Picasso picasso = new Picasso.Builder(this)
-                .downloader(new OkHttp3Downloader(OkHttpProvider.provideOkHttp()))
-                .build();
-        Picasso.setSingletonInstance(picasso);
     }
 }

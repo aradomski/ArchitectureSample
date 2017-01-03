@@ -35,7 +35,7 @@ public class DevDi {
         private DevApiComponent apiComponent;
 
         private Injections() {
-            apiComponent = DaggerDevApiComponent.builder().devApiModule(new DevApiModule()).build();
+            apiComponent = DaggerDevApiComponent.builder().devApiModule(new DevApiModule(App.obtain())).build();
             appComponent = DaggerDevAppComponent.builder().devApiComponent(apiComponent).devAppModule(new DevAppModule(App.obtain())).build();
         }
 

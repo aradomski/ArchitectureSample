@@ -1,5 +1,7 @@
 package pl.edu.radomski.architecturesample.di.api;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,9 +21,9 @@ public class ApiModule {
     private final Retrofit retrofit;
     private final Gson gson;
 
-    public ApiModule() {
+    public ApiModule(Context context) {
 
-        okHttpClient = OkHttpProvider.provideOkHttp();
+        okHttpClient = OkHttpProvider.provideOkHttp(context);
 
 
         retrofit = new Retrofit.Builder()

@@ -1,5 +1,7 @@
 package pl.edu.radomski.architecturesample.di.api;
 
+import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -14,8 +16,9 @@ public class DevApiModule extends ApiModule {
     private final OkHttpClient devOkHttpClient;
     private final Retrofit devRetrofit;
 
-    public DevApiModule() {
-        devOkHttpClient = OkHttpProvider.provideOkHttp();
+    public DevApiModule(Context context) {
+        super(context);
+        devOkHttpClient = OkHttpProvider.provideOkHttp(context);
 
 
         devRetrofit = new Retrofit.Builder()

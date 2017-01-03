@@ -34,7 +34,7 @@ public class DI {
         private ApiComponent apiComponent;
 
         private Injections() {
-            apiComponent = DaggerApiComponent.builder().apiModule(new ApiModule()).build();
+            apiComponent = DaggerApiComponent.builder().apiModule(new ApiModule(App.obtain())).build();
         }
 
         public void inject(App app) {

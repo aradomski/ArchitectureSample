@@ -7,6 +7,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0-beta1'
         classpath 'me.tatarka:gradle-retrolambda:3.4.0'
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+        classpath "com.fernandocejas.frodo:frodo-plugin:0.8.3"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -55,13 +57,22 @@ allprojects {
         stetho_okhttp = 'com.facebook.stetho:stetho-okhttp3:1.4.2'
         stetho_js_rhino = 'com.facebook.stetho:stetho-js-rhino:1.4.2'
         stetho_timber = 'com.facebook.stetho:stetho-timber:1.4.2'
-        okhttp3_picasso_downloader =  'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+        okhttp3_picasso_downloader = 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
 
 
         leakcanary = 'com.squareup.leakcanary:leakcanary-android:1.5'
+        blockcanary = 'com.github.markzhai:blockcanary-android:1.4.0'
 
         retrofit_logging = 'com.squareup.okhttp3:logging-interceptor:3.5.0'
 
+        scalpel = 'com.jakewharton.scalpel:scalpel:1.1.2'
 
+        debugDrawer = 'io.palaima.debugdrawer:debugdrawer:0.7.0'
+        debugDrawerView = 'io.palaima.debugdrawer:debugdrawer-view:0.7.0'
+        debugDrawerCommons = 'io.palaima.debugdrawer:debugdrawer-commons:0.7.0'
+        debugDrawerOkHttp3 = 'io.palaima.debugdrawer:debugdrawer-okhttp3:0.7.0'
+        debugDrawerPicasso = 'io.palaima.debugdrawer:debugdrawer-picasso:0.7.0'
+        debugDrawerScalper = 'io.palaima.debugdrawer:debugdrawer-scalpel:0.7.0'
+        debugDrawerTimber = 'io.palaima.debugdrawer:debugdrawer-timber:0.7.0'
     }
 }

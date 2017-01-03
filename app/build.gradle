@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
-
+apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.fernandocejas.frodo'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -94,15 +94,26 @@ dependencies {
 
     compile timber
 
-    //DEBUG BUILD ONLY
-    debugCompile stetho
-    debugCompile stetho_okhttp
-    debugCompile stetho_js_rhino
-    debugCompile stetho_timber
-    debugCompile okhttp3_picasso_downloader
+    //DEV BUILD ONLY
+    devCompile stetho
+    devCompile stetho_okhttp
+    devCompile stetho_js_rhino
+    devCompile stetho_timber
+    devCompile okhttp3_picasso_downloader
 
-    debugCompile leakcanary
+    devCompile leakcanary
+    devCompile blockcanary
 
-    debugCompile retrofit_logging
+    devCompile retrofit_logging
+
+    devCompile scalpel
+
+    devCompile debugDrawer
+    devCompile debugDrawerView
+    devCompile debugDrawerCommons
+    devCompile debugDrawerOkHttp3
+    devCompile debugDrawerPicasso
+    devCompile debugDrawerScalper
+    devCompile debugDrawerTimber
 
 }
